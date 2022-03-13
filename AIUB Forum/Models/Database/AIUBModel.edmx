@@ -29,6 +29,15 @@
           <Property Name="Score" Type="int" Nullable="false" />
           <Property Name="AnsUserId" Type="int" Nullable="false" />
         </EntityType>
+        <EntityType Name="AnswerVotes">
+          <Key>
+            <PropertyRef Name="AnsVoteId" />
+          </Key>
+          <Property Name="AnsVoteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AnsId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="Badges">
           <Key>
             <PropertyRef Name="BadgeId" />
@@ -151,6 +160,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AnswerVotes_Answers">
+          <End Role="Answers" Type="Self.Answers" Multiplicity="1" />
+          <End Role="AnswerVotes" Type="Self.AnswerVotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answers">
+              <PropertyRef Name="AnsId" />
+            </Principal>
+            <Dependent Role="AnswerVotes">
+              <PropertyRef Name="AnsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Badges_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="Badges" Type="Self.Badges" Multiplicity="*" />
@@ -250,6 +271,7 @@
         <EntityContainer Name="AIUB_ForumModelStoreContainer">
           <EntitySet Name="AnswerComments" EntityType="Self.AnswerComments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AnswerVotes" EntityType="Self.AnswerVotes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Badges" EntityType="Self.Badges" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
@@ -265,6 +287,10 @@
           <AssociationSet Name="FK_Answers_Posts" Association="Self.FK_Answers_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerVotes_Answers" Association="Self.FK_AnswerVotes_Answers">
+            <End Role="Answers" EntitySet="Answers" />
+            <End Role="AnswerVotes" EntitySet="AnswerVotes" />
           </AssociationSet>
           <AssociationSet Name="FK_Badges_User" Association="Self.FK_Badges_User">
             <End Role="User" EntitySet="User" />
@@ -565,6 +591,11 @@
             <End Role="Post" EntitySet="Posts" />
             <End Role="Answer" EntitySet="Answers" />
           </AssociationSet>
+          <EntitySet Name="AnswerVotes" EntityType="AIUB_ForumModel.AnswerVote" />
+          <AssociationSet Name="FK_AnswerVotes_Answers" Association="AIUB_ForumModel.FK_AnswerVotes_Answers">
+            <End Role="Answer" EntitySet="Answers" />
+            <End Role="AnswerVote" EntitySet="AnswerVotes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AnswerComment">
           <Key>
@@ -592,6 +623,7 @@
           <Property Name="AnsUserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="AnswerComments" Relationship="AIUB_ForumModel.FK_AnswerComments_Answers" FromRole="Answer" ToRole="AnswerComment" />
           <NavigationProperty Name="Post" Relationship="AIUB_ForumModel.FK_Answers_Posts" FromRole="Answer" ToRole="Post" />
+          <NavigationProperty Name="AnswerVotes" Relationship="AIUB_ForumModel.FK_AnswerVotes_Answers" FromRole="Answer" ToRole="AnswerVote" />
         </EntityType>
         <Association Name="FK_AnswerComments_Answers">
           <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="1" />
@@ -614,6 +646,28 @@
             </Principal>
             <Dependent Role="Answer">
               <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AnswerVote">
+          <Key>
+            <PropertyRef Name="AnsVoteId" />
+          </Key>
+          <Property Name="AnsVoteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AnsId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="Answer" Relationship="AIUB_ForumModel.FK_AnswerVotes_Answers" FromRole="AnswerVote" ToRole="Answer" />
+        </EntityType>
+        <Association Name="FK_AnswerVotes_Answers">
+          <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="1" />
+          <End Type="AIUB_ForumModel.AnswerVote" Role="AnswerVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Answer">
+              <PropertyRef Name="AnsId" />
+            </Principal>
+            <Dependent Role="AnswerVote">
+              <PropertyRef Name="AnsId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -752,6 +806,16 @@
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Body" ColumnName="Body" />
                 <ScalarProperty Name="AnsId" ColumnName="AnsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AnswerVotes">
+            <EntityTypeMapping TypeName="AIUB_ForumModel.AnswerVote">
+              <MappingFragment StoreEntitySet="AnswerVotes">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="AnsId" ColumnName="AnsId" />
+                <ScalarProperty Name="AnsVoteId" ColumnName="AnsVoteId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

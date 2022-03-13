@@ -165,6 +165,9 @@
     <Compile Include="Models\Database\AnswerComment.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\AnswerVote.cs">
+      <DependentUpon>AIUBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\Badge.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>

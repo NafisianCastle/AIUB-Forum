@@ -35,5 +35,6 @@ namespace AIUB_Forum.Models.Database
         public virtual DbSet<Vote> Votes { get; set; }
         public virtual DbSet<AnswerComment> AnswerComments { get; set; }
         public virtual DbSet<Answer> Answers { get; set; }
+        public virtual DbSet<AnswerVote> AnswerVotes { get; set; }
     }
 }
