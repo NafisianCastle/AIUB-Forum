@@ -19,6 +19,7 @@ namespace AIUB_Forum.Models.Database
         {
             this.Score = 0;
             this.AnswerComments = new HashSet<AnswerComment>();
+            this.AnswerVotes = new HashSet<AnswerVote>();
         }
     
         public int AnsId { get; set; }
@@ -33,5 +34,7 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnswerComment> AnswerComments { get; set; }
         public virtual Post Post { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnswerVote> AnswerVotes { get; set; }
     }
 }
