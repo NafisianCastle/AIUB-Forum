@@ -19,6 +19,16 @@ namespace AIUB_Forum.Controllers
             return View(_db.Users.ToList());
         }
 
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
+
+        public ActionResult AddAdmin()
+        {
+            return View();
+        }
+
         // GET: Users/Details/5
         
         public ActionResult Details(int? id)
