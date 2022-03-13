@@ -10,6 +10,11 @@ namespace AIUB_Forum.Controllers
     {
         private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
+        public ActionResult CompanyRegister()
+        {
+            return View();
+        }
+
         // GET: Companies
         public ActionResult Index()
         {
