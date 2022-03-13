@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using AIUB_Forum.Models.Database;
 using System.Linq;
 using System.Web.Mvc;
@@ -50,6 +51,11 @@ namespace AIUB_Forum.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
+            user.UserType = "User";
+            user.CreationDate= DateTime.Today;
+            if (!ModelState.IsValid) return View(user);
+            _db.Users.Add(user);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
         [Authorize]

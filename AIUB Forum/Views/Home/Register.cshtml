@@ -4,4 +4,14 @@
 }
 
 <h2>Register</h2>
-
+<form action="/home/register" method="post" class="form-horizontal">
+    <label for="Username">Username</label>
+    <input type="text" name="Username" id="Username" placeholder="Enter Username" class="form-control"  required/> <br/>
+    <label for="Email">Email</label>
+    <input type="email" name="Email" id="Email" placeholder="Enter Email" class="form-control" required/> <br/>
+    <label for="Password">Password</label>
+    <input type="password" name="Password" id="Password" placeholder="Enter Password" class="form-control" required/> <br/>
+    <label for="Location">Location</label>
+    <input type="text" name="Location" id="Location" placeholder="Enter your location" class="form-control" required/> <br/>
+    <input type="submit" value="Register!"/>
+</form>
