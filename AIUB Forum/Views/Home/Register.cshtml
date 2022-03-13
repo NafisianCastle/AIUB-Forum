@@ -5,8 +5,23 @@
 <script>
     function Vali() {
         let x = document.forms["reg"]["Username"].value;
-        if (x == "") {
+        let x1 = document.forms["reg"]["Email"].value;
+        let x2 = document.forms["reg"]["Password"].value;
+        let x2 = document.forms["reg"]["Location"].value;
+        if (!x) {
             alert("User name must be filled out!");
+            return false;
+        }
+        if (!x1) {
+            alert("Email must be filled out!");
+            return false;
+        }
+        if (!x2) {
+            alert("Password must be filled out!");
+            return false;
+        }
+        if (!x3) {
+            alert("Location must be filled out!");
             return false;
         }
         

@@ -3,15 +3,29 @@
     ViewBag.Title = "CompanyRegister";
 }
 
+<script>
+    function Valid() {
+        let x = document.forms["cpreg"]["CCategory"].value;
+        let y = document.forms["cpreg"]["CompanyName"].value;
+        if (!x) {
+            alert("Catagory must be filled out!");
+            return false;
+        }
+        if (!y) {
+            alert("Company name could not be empty!");
+            return false;
+        }
+    }
+</script>
 <h2>CompanyRegister</h2>
 
-<form action="/Companies/CompanyRegister" method="post">
+<form name="cpreg"action="/Companies/CompanyRegister" method="post"onsubmit="return Valid()">
     <label for=""></label>
-    <input type="text" name="CompanyName" id="CompanyName" placeholder="Enter Company Name" required="required"/> <br />
+    <input type="text" name="CompanyName" id="CompanyName" placeholder="Enter Company Name" pattern="/^(\(([^)]+)\))?[[:punct:]]?\p{Lu}+(?:[\s'-]?[\p{L}\d]+)+(\(([^)]+)\))*$/gm" title="Please enter proper Appropiate Name."/> <br />
     <label for=""></label>
-    <input type="text" name="Location" id="Location" placeholder="Enter Company Location" required="required"/> <br />
+    <input type="text" name="Location" id="Location" placeholder="Enter Company Location" required/> <br />
     <label for=""></label>
-    <input type="text" name="CDescription" id="CDescription" placeholder="Enter Company Description" required="required"/> <br />
+    <input type="text" name="CDescription" id="CDescription" placeholder="Enter Company Description" required/> <br />
     <label for="CCategory">Choose a category</label>
     <select name="CCategory" id="CCategory">
         <option value="Multinational">Multinational</option>
