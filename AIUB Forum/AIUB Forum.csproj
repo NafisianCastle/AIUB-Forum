@@ -276,6 +276,8 @@
     <Content Include="Views\Badges\Edit.cshtml" />
     <Content Include="Views\Badges\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Users\AdminDashboard.cshtml" />
+    <Content Include="Views\Users\AddAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
