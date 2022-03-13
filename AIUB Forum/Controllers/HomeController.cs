@@ -33,8 +33,9 @@ namespace AIUB_Forum.Controllers
                         select e).FirstOrDefault();
             if (data != null)
             {
-                FormsAuthentication.SetAuthCookie("data.Username", false);
+                FormsAuthentication.SetAuthCookie("data.UserName", false);
                 Session["usertype"] = data.UserType;
+                Session["userid"] = data.UserId;
                 return RedirectToAction("Index");
             }
 

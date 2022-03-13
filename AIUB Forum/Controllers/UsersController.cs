@@ -13,7 +13,18 @@ namespace AIUB_Forum.Controllers
         private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
         // GET: Users
-        
+        public ActionResult AdminDashboard()
+        {
+            return View();
+        }
+        public ActionResult AddAdmin()
+        {
+            return View();
+        }
+        public ActionResult AddModerator()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View(_db.Users.ToList());

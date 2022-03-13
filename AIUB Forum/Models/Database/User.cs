@@ -17,6 +17,9 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Views = "0";
+            this.Reputation = 0;
+            this.UserType = "User";
             this.Badges = new HashSet<Badge>();
             this.Comments = new HashSet<Comment>();
             this.Companies = new HashSet<Company>();
@@ -29,7 +32,7 @@ namespace AIUB_Forum.Models.Database
         public string AboutMe { get; set; }
         public string Views { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public string Reputation { get; set; }
+        public int Reputation { get; set; }
         public byte[] ProfilePic { get; set; }
         public string UserType { get; set; }
         public string Password { get; set; }
