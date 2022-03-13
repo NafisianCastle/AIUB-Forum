@@ -29,7 +29,7 @@ namespace AIUB_Forum.Models.Database
         public string AboutMe { get; set; }
         public string Views { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
-        public string Reputation { get; set; }
+        public int Reputation { get; set; }
         public byte[] ProfilePic { get; set; }
         public string UserType { get; set; }
         public string Password { get; set; }

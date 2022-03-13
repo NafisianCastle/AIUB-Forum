@@ -16,7 +16,7 @@ namespace AIUB_Forum.Models.Database
     {
         public int AnsCmntId { get; set; }
         public int AnsId { get; set; }
-        public string Score { get; set; }
+        public int Score { get; set; }
         public string Text { get; set; }
         public System.DateTime Date { get; set; }
         public int UserId { get; set; }

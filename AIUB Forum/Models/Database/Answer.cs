@@ -27,7 +27,7 @@ namespace AIUB_Forum.Models.Database
         public Nullable<System.DateTime> DeleteDate { get; set; }
         public int PostId { get; set; }
         public int Score { get; set; }
-        public Nullable<int> AnsUserId { get; set; }
+        public int AnsUserId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnswerComment> AnswerComments { get; set; }
