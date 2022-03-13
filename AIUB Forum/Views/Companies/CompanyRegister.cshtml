@@ -5,6 +5,20 @@
 
 <h2>CompanyRegister</h2>
 
-<form action="/">
-
+<form action="/Companies/CompanyRegister" method="post">
+    <label for=""></label>
+    <input type="text" name="CompanyName" id="CompanyName" placeholder="Enter Company Name" required="required"/> <br />
+    <label for=""></label>
+    <input type="text" name="Location" id="Location" placeholder="Enter Company Location" required="required"/> <br />
+    <label for=""></label>
+    <input type="text" name="CDescription" id="CDescription" placeholder="Enter Company Description" required="required"/> <br />
+    <label for="CCategory">Choose a category</label>
+    <select name="CCategory" id="CCategory">
+        <option value="Multinational">Multinational</option>
+        <option value="Government">Government</option>
+        <option value="NGO">NGO</option>
+        <option value="IT">IT</option>
+    </select>
+    <input type="hidden" name="UserId" value="@Session["userid"]"/>
+    <input type="submit" value="Register your company">
 </form>
