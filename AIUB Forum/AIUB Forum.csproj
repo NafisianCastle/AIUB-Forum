@@ -192,6 +192,17 @@
     <Compile Include="Models\Database\Vote.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\AnswerCommentModel.cs" />
+    <Compile Include="Models\Entities\AnswerModel.cs" />
+    <Compile Include="Models\Entities\AnswerVoteModel.cs" />
+    <Compile Include="Models\Entities\BadgeModel.cs" />
+    <Compile Include="Models\Entities\CommentModel.cs" />
+    <Compile Include="Models\Entities\CompanyModel.cs" />
+    <Compile Include="Models\Entities\JobModel.cs" />
+    <Compile Include="Models\Entities\JobPostModel.cs" />
+    <Compile Include="Models\Entities\PostModel.cs" />
+    <Compile Include="Models\Entities\UserModel.cs" />
+    <Compile Include="Models\Entities\VoteModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -287,7 +298,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
