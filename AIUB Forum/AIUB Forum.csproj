@@ -278,6 +278,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Users\AdminDashboard.cshtml" />
     <Content Include="Views\Users\AddAdmin.cshtml" />
+    <Content Include="Views\Users\AddModerator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,7 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Answer()
         {
+            this.Score = 0;
             this.AnswerComments = new HashSet<AnswerComment>();
         }
     

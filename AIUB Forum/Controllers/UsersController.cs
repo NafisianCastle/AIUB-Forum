@@ -21,6 +21,10 @@ namespace AIUB_Forum.Controllers
         {
             return View();
         }
+        public ActionResult AddModerator()
+        {
+            return View();
+        }
         public ActionResult Index()
         {
             return View(_db.Users.ToList());

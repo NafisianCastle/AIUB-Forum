@@ -17,6 +17,9 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.Views = "0";
+            this.Reputation = 0;
+            this.UserType = "User";
             this.Badges = new HashSet<Badge>();
             this.Comments = new HashSet<Comment>();
             this.Companies = new HashSet<Company>();
