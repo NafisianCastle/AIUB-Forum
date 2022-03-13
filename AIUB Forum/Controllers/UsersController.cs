@@ -31,7 +31,6 @@ namespace AIUB_Forum.Controllers
         }
 
         // GET: Users/Details/5
-        
         public ActionResult Details(int? id)
         {
             if (id == null)
