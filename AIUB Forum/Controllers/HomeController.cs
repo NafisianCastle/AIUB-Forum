@@ -64,10 +64,16 @@ namespace AIUB_Forum.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
-
+        [HttpGet]
         public ActionResult JobPost()
         {
-            throw new NotImplementedException();
+            return View();
         }
+        [HttpPost]
+        public ActionResult JobPost(Post post)
+        {
+            return View();
+        }
+
     }
 }

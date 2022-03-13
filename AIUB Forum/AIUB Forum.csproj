@@ -283,9 +283,11 @@
     <Content Include="Views\Users\AddAdmin.cshtml" />
     <Content Include="Views\Users\AddModerator.cshtml" />
     <Content Include="Views\Companies\CompanyRegister.cshtml" />
+    <Content Include="Views\Home\JobPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\Entities\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
