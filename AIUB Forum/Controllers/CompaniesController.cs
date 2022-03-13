@@ -9,6 +9,21 @@ namespace AIUB_Forum.Controllers
     public class CompaniesController : Controller
     {
         private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
+        [Authorize]
+        [HttpGet]
+        public ActionResult CompanyRegister()
+        {
+            return View();
+        }
+        [Authorize]
+        [HttpPost]
+        public ActionResult CompanyRegister(Company company)
+        {
+            if (!ModelState.IsValid) return View(company);
+            _db.Companies.Add(company);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
         // GET: Companies
         public ActionResult Index()

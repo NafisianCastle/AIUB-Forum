@@ -137,8 +137,6 @@
     <Compile Include="Controllers\BadgesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\JobPostsController.cs" />
-    <Compile Include="Controllers\JobsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -263,16 +261,6 @@
     <Content Include="Views\Posts\Details.cshtml" />
     <Content Include="Views\Posts\Edit.cshtml" />
     <Content Include="Views\Posts\Index.cshtml" />
-    <Content Include="Views\JobPosts\Create.cshtml" />
-    <Content Include="Views\JobPosts\Delete.cshtml" />
-    <Content Include="Views\JobPosts\Details.cshtml" />
-    <Content Include="Views\JobPosts\Edit.cshtml" />
-    <Content Include="Views\JobPosts\Index.cshtml" />
-    <Content Include="Views\Jobs\Create.cshtml" />
-    <Content Include="Views\Jobs\Delete.cshtml" />
-    <Content Include="Views\Jobs\Details.cshtml" />
-    <Content Include="Views\Jobs\Edit.cshtml" />
-    <Content Include="Views\Jobs\Index.cshtml" />
     <Content Include="Views\Badges\Create.cshtml" />
     <Content Include="Views\Badges\Delete.cshtml" />
     <Content Include="Views\Badges\Details.cshtml" />
@@ -282,6 +270,7 @@
     <Content Include="Views\Users\AdminDashboard.cshtml" />
     <Content Include="Views\Users\AddAdmin.cshtml" />
     <Content Include="Views\Users\AddModerator.cshtml" />
+    <Content Include="Views\Companies\CompanyRegister.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
