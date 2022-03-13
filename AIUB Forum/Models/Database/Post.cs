@@ -17,8 +17,8 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Post()
         {
-            this.Score = "0";
-            this.views = "0";
+            this.Score = 0;
+            this.views = 0;
             this.AnswerCount = 0;
             this.ComentsCount = 0;
             this.Comments = new HashSet<Comment>();
@@ -29,8 +29,8 @@ namespace AIUB_Forum.Models.Database
         public int PostId { get; set; }
         public System.DateTime CreateDate { get; set; }
         public Nullable<System.DateTime> DeleteDate { get; set; }
-        public string Score { get; set; }
-        public string views { get; set; }
+        public int Score { get; set; }
+        public int views { get; set; }
         public string Body { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
