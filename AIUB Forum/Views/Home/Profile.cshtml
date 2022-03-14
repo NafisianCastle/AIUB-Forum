@@ -81,6 +81,11 @@
             margin-left: -10px;
             z-index: 10;
         }
+
+    .myclass tr:hover {
+        cursor: pointer;
+        background-color: #ccc;
+    }
 </style>
 <div class="container">
     <div class="row">
@@ -106,15 +111,50 @@
                         <p><small>Posts</small></p>
                     </div>
                     <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>@Model.</strong></h2>
+                        <h2><strong>@Model.Answers.Count</strong></h2>
                         <p><small>Answers</small></p>
                     </div>
                     <div class="col-xs-12 col-sm-4 emphasis">
-                        <h2><strong>43</strong></h2>
+                        <h2><strong>@Model.Votes.Count+@Model.AnswerVotes.Count</strong></h2>
                         <p><small>Votes</small></p>
                     </div>
                 </div>
             </div>
         </div>
+
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-condensed table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Score</th>
+                    <th>Title</th>
+                    <th>Body</th>
+                    <th>Views</th>
+                    <th>Answers</th>
+                    <th>Comments</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody class="table-hover table-striped">
+                @foreach (var post in @Model.Posts)
+                {
+                    <tr>
+                        <td>@post.Score</td>
+                        <td>@post.Title.Substring(0, 4) ...</td>
+                        <td>@post.Body.Substring(0, 10) <a href="/posts/details/@post.PostId">see more...</a></td>
+                        <td>@post.views</td>
+                        <td>@post.AnswerCount</td>
+                        <td>@post.ComentsCount</td>
+                        <td><i>posted on @post.CreateDate</i></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </div>
+
+
+
+
+

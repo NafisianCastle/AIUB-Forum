@@ -135,7 +135,11 @@
     <Compile Include="Auth\AdminAccess.cs" />
     <Compile Include="Auth\ModeratorAccess.cs" />
     <Compile Include="Controllers\AdminsController.cs" />
+    <Compile Include="Controllers\AnswerCommentsController.cs" />
+    <Compile Include="Controllers\AnswersController.cs" />
+    <Compile Include="Controllers\AnswerVotesController.cs" />
     <Compile Include="Controllers\BadgesController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobPostsController.cs" />
@@ -143,6 +147,7 @@
     <Compile Include="Controllers\ModeratorsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\VotesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -316,6 +321,31 @@
     <Content Include="Views\Moderators\Edit.cshtml" />
     <Content Include="Views\Moderators\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
+    <Content Include="Views\Votes\Create.cshtml" />
+    <Content Include="Views\Votes\Delete.cshtml" />
+    <Content Include="Views\Votes\Details.cshtml" />
+    <Content Include="Views\Votes\Edit.cshtml" />
+    <Content Include="Views\Votes\Index.cshtml" />
+    <Content Include="Views\Answers\Create.cshtml" />
+    <Content Include="Views\Answers\Delete.cshtml" />
+    <Content Include="Views\Answers\Details.cshtml" />
+    <Content Include="Views\Answers\Edit.cshtml" />
+    <Content Include="Views\Answers\Index.cshtml" />
+    <Content Include="Views\AnswerComments\Create.cshtml" />
+    <Content Include="Views\AnswerComments\Delete.cshtml" />
+    <Content Include="Views\AnswerComments\Details.cshtml" />
+    <Content Include="Views\AnswerComments\Edit.cshtml" />
+    <Content Include="Views\AnswerComments\Index.cshtml" />
+    <Content Include="Views\AnswerVotes\Create.cshtml" />
+    <Content Include="Views\AnswerVotes\Delete.cshtml" />
+    <Content Include="Views\AnswerVotes\Details.cshtml" />
+    <Content Include="Views\AnswerVotes\Edit.cshtml" />
+    <Content Include="Views\AnswerVotes\Index.cshtml" />
+    <Content Include="Views\Comments\Create.cshtml" />
+    <Content Include="Views\Comments\Delete.cshtml" />
+    <Content Include="Views\Comments\Details.cshtml" />
+    <Content Include="Views\Comments\Edit.cshtml" />
+    <Content Include="Views\Comments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,26 +17,7 @@ namespace AIUB_Forum.Controllers
         {
             return View();
         }
-        [HttpGet]
-        public ActionResult AddAdmin()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddAdmin(User user)
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult AddModerator()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult AddModerator(User user)
-        {
-            return View();
-        }
+        
         public ActionResult Index()
         {
             return View(_db.Users.ToList());

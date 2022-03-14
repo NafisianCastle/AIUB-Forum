@@ -44,6 +44,7 @@
           <Property Name="AnsId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Badges">
           <Key>
@@ -149,6 +150,7 @@
           <Property Name="PostId" Type="int" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
           <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Value" Type="int" Nullable="false" />
         </EntityType>
         <Association Name="FK_Admin_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -562,6 +564,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Votes_Posts" FromRole="Votes" ToRole="Posts" />
           <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_Votes_User" FromRole="Vote" ToRole="User" />
+          <Property Name="Value" Type="Int32" Nullable="false" DefaultValue="1" />
         </EntityType>
         <Association Name="FK_Badges_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -806,6 +809,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Answer" Relationship="AIUB_ForumModel.FK_AnswerVotes_Answers" FromRole="AnswerVote" ToRole="Answer" />
           <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_AnswerVotes_User" FromRole="AnswerVote" ToRole="User" />
+          <Property Name="Value" Type="Int32" Nullable="false" DefaultValue="1" />
         </EntityType>
         <Association Name="FK_AnswerVotes_Answers">
           <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="1" />
@@ -1012,6 +1016,7 @@
           <EntitySetMapping Name="Votes">
             <EntityTypeMapping TypeName="AIUB_ForumModel.Vote">
               <MappingFragment StoreEntitySet="Votes">
+                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="VoteId" ColumnName="VoteId" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1048,6 +1053,7 @@
           <EntitySetMapping Name="AnswerVotes">
             <EntityTypeMapping TypeName="AIUB_ForumModel.AnswerVote">
               <MappingFragment StoreEntitySet="AnswerVotes">
+                <ScalarProperty Name="Value" ColumnName="Value" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="AnsId" ColumnName="AnsId" />

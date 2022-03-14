@@ -20,6 +20,7 @@ namespace AIUB_Forum.Controllers
         [Authorize]
         public ActionResult Profile(int? id)
         {
+
             var user = _db.Users.Find(id);
             if (user == null)
             {
@@ -62,7 +63,7 @@ namespace AIUB_Forum.Controllers
         public ActionResult Register(User user)
         {
             user.UserType = "User";
-            user.CreationDate= DateTime.Today;
+            user.CreationDate = DateTime.Today;
             if (!ModelState.IsValid) return View(user);
             _db.Users.Add(user);
             _db.SaveChanges();

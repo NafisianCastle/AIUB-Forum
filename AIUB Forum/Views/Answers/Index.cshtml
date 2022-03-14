@@ -1,0 +1,69 @@
+﻿@model IEnumerable<AIUB_Forum.Models.Database.Answer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifyDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeleteDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Score)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Post.Body)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Location)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifyDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeleteDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Score)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Post.Body)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Location)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AnsId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AnsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AnsId })
+        </td>
+    </tr>
+}
+
+</table>
