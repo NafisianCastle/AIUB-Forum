@@ -1,0 +1,26 @@
+﻿@model AIUB_Forum.Models.Database.Moderator
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Moderator</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Location)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Location)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ModeratorId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

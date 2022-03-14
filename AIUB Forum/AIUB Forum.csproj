@@ -134,11 +134,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Auth\AdminAccess.cs" />
     <Compile Include="Auth\ModeratorAccess.cs" />
+    <Compile Include="Controllers\AdminsController.cs" />
     <Compile Include="Controllers\BadgesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobPostsController.cs" />
     <Compile Include="Controllers\JobsController.cs" />
+    <Compile Include="Controllers\ModeratorsController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Global.asax.cs">
@@ -303,6 +305,16 @@
     <Content Include="Views\Users\AddModerator.cshtml" />
     <Content Include="Views\Companies\CompanyRegister.cshtml" />
     <Content Include="Views\Home\JobPost.cshtml" />
+    <Content Include="Views\Admins\Create.cshtml" />
+    <Content Include="Views\Admins\Delete.cshtml" />
+    <Content Include="Views\Admins\Details.cshtml" />
+    <Content Include="Views\Admins\Edit.cshtml" />
+    <Content Include="Views\Admins\Index.cshtml" />
+    <Content Include="Views\Moderators\Create.cshtml" />
+    <Content Include="Views\Moderators\Delete.cshtml" />
+    <Content Include="Views\Moderators\Details.cshtml" />
+    <Content Include="Views\Moderators\Edit.cshtml" />
+    <Content Include="Views\Moderators\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
