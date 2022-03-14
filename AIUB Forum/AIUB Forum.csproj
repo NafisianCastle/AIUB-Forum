@@ -144,6 +144,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\Admin.cs">
+      <DependentUpon>AIUBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\AIUBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -181,6 +184,9 @@
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\JobPost.cs">
+      <DependentUpon>AIUBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Database\Moderator.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Database\Post.cs">
