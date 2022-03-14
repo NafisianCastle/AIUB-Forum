@@ -27,6 +27,10 @@
         <AssociationConnector Association="AIUB_ForumModel.FK_Answers_Posts" />
         <EntityTypeShape EntityType="AIUB_ForumModel.AnswerVote" Width="1.5" PointX="3" PointY="17.75" />
         <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_Answers" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Admin" Width="1.5" PointX="2.75" PointY="20.5" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Moderator" Width="1.5" PointX="2.75" PointY="6.125" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Admin_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Moderator_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
