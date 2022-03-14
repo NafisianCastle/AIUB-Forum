@@ -12,12 +12,12 @@ namespace AIUB_Forum.Controllers
 {
     public class ModeratorsController : Controller
     {
-        private AIUB_ForumEntities2 db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
         // GET: Moderators
         public ActionResult Index()
         {
-            var moderators = db.Moderators.Include(m => m.User);
+            var moderators = _db.Moderators.Include(m => m.User);
             return View(moderators.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Moderator moderator = db.Moderators.Find(id);
+            var moderator = _db.Moderators.Find(id);
             if (moderator == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace AIUB_Forum.Controllers
         // GET: Moderators/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location");
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Moderators.Add(moderator);
-                db.SaveChanges();
+                _db.Moderators.Add(moderator);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", moderator.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", moderator.UserId);
             return View(moderator);
         }
 
@@ -68,12 +68,12 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Moderator moderator = db.Moderators.Find(id);
+            var moderator = _db.Moderators.Find(id);
             if (moderator == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", moderator.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", moderator.UserId);
             return View(moderator);
         }
 
@@ -86,11 +86,11 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(moderator).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(moderator).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", moderator.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", moderator.UserId);
             return View(moderator);
         }
 
@@ -101,7 +101,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Moderator moderator = db.Moderators.Find(id);
+            var moderator = _db.Moderators.Find(id);
             if (moderator == null)
             {
                 return HttpNotFound();
@@ -114,9 +114,9 @@ namespace AIUB_Forum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Moderator moderator = db.Moderators.Find(id);
-            db.Moderators.Remove(moderator);
-            db.SaveChanges();
+            var moderator = _db.Moderators.Find(id);
+            _db.Moderators.Remove(moderator);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -124,7 +124,7 @@ namespace AIUB_Forum.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

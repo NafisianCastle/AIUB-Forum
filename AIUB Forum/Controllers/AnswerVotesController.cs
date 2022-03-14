@@ -12,12 +12,12 @@ namespace AIUB_Forum.Controllers
 {
     public class AnswerVotesController : Controller
     {
-        private AIUB_ForumEntities2 db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
         // GET: AnswerVotes
         public ActionResult Index()
         {
-            var answerVotes = db.AnswerVotes.Include(a => a.Answer).Include(a => a.User);
+            var answerVotes = _db.AnswerVotes.Include(a => a.Answer).Include(a => a.User);
             return View(answerVotes.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnswerVote answerVote = db.AnswerVotes.Find(id);
+            var answerVote = _db.AnswerVotes.Find(id);
             if (answerVote == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace AIUB_Forum.Controllers
         // GET: AnswerVotes/Create
         public ActionResult Create()
         {
-            ViewBag.AnsId = new SelectList(db.Answers, "AnsId", "Body");
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location");
+            ViewBag.AnsId = new SelectList(_db.Answers, "AnsId", "Body");
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.AnswerVotes.Add(answerVote);
-                db.SaveChanges();
+                _db.AnswerVotes.Add(answerVote);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AnsId = new SelectList(db.Answers, "AnsId", "Body", answerVote.AnsId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", answerVote.UserId);
+            ViewBag.AnsId = new SelectList(_db.Answers, "AnsId", "Body", answerVote.AnsId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", answerVote.UserId);
             return View(answerVote);
         }
 
@@ -70,13 +70,13 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnswerVote answerVote = db.AnswerVotes.Find(id);
+            var answerVote = _db.AnswerVotes.Find(id);
             if (answerVote == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.AnsId = new SelectList(db.Answers, "AnsId", "Body", answerVote.AnsId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", answerVote.UserId);
+            ViewBag.AnsId = new SelectList(_db.Answers, "AnsId", "Body", answerVote.AnsId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", answerVote.UserId);
             return View(answerVote);
         }
 
@@ -89,12 +89,12 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(answerVote).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(answerVote).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AnsId = new SelectList(db.Answers, "AnsId", "Body", answerVote.AnsId);
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", answerVote.UserId);
+            ViewBag.AnsId = new SelectList(_db.Answers, "AnsId", "Body", answerVote.AnsId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", answerVote.UserId);
             return View(answerVote);
         }
 
@@ -105,7 +105,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AnswerVote answerVote = db.AnswerVotes.Find(id);
+            var answerVote = _db.AnswerVotes.Find(id);
             if (answerVote == null)
             {
                 return HttpNotFound();
@@ -118,9 +118,9 @@ namespace AIUB_Forum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AnswerVote answerVote = db.AnswerVotes.Find(id);
-            db.AnswerVotes.Remove(answerVote);
-            db.SaveChanges();
+            var answerVote = _db.AnswerVotes.Find(id);
+            _db.AnswerVotes.Remove(answerVote);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -128,7 +128,7 @@ namespace AIUB_Forum.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

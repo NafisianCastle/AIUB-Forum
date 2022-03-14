@@ -12,12 +12,12 @@ namespace AIUB_Forum.Controllers
 {
     public class AnswersController : Controller
     {
-        private AIUB_ForumEntities2 db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
         // GET: Answers
         public ActionResult Index()
         {
-            var answers = db.Answers.Include(a => a.Post).Include(a => a.User);
+            var answers = _db.Answers.Include(a => a.Post).Include(a => a.User);
             return View(answers.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Answer answer = db.Answers.Find(id);
+            var answer = _db.Answers.Find(id);
             if (answer == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace AIUB_Forum.Controllers
         // GET: Answers/Create
         public ActionResult Create()
         {
-            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Body");
-            ViewBag.AnsUserId = new SelectList(db.Users, "UserId", "Location");
+            ViewBag.PostId = new SelectList(_db.Posts, "PostId", "Body");
+            ViewBag.AnsUserId = new SelectList(_db.Users, "UserId", "Location");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Answers.Add(answer);
-                db.SaveChanges();
+                _db.Answers.Add(answer);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Body", answer.PostId);
-            ViewBag.AnsUserId = new SelectList(db.Users, "UserId", "Location", answer.AnsUserId);
+            ViewBag.PostId = new SelectList(_db.Posts, "PostId", "Body", answer.PostId);
+            ViewBag.AnsUserId = new SelectList(_db.Users, "UserId", "Location", answer.AnsUserId);
             return View(answer);
         }
 
@@ -70,13 +70,13 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Answer answer = db.Answers.Find(id);
+            var answer = _db.Answers.Find(id);
             if (answer == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Body", answer.PostId);
-            ViewBag.AnsUserId = new SelectList(db.Users, "UserId", "Location", answer.AnsUserId);
+            ViewBag.PostId = new SelectList(_db.Posts, "PostId", "Body", answer.PostId);
+            ViewBag.AnsUserId = new SelectList(_db.Users, "UserId", "Location", answer.AnsUserId);
             return View(answer);
         }
 
@@ -89,12 +89,12 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(answer).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(answer).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PostId = new SelectList(db.Posts, "PostId", "Body", answer.PostId);
-            ViewBag.AnsUserId = new SelectList(db.Users, "UserId", "Location", answer.AnsUserId);
+            ViewBag.PostId = new SelectList(_db.Posts, "PostId", "Body", answer.PostId);
+            ViewBag.AnsUserId = new SelectList(_db.Users, "UserId", "Location", answer.AnsUserId);
             return View(answer);
         }
 
@@ -105,7 +105,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Answer answer = db.Answers.Find(id);
+            var answer = _db.Answers.Find(id);
             if (answer == null)
             {
                 return HttpNotFound();
@@ -118,9 +118,9 @@ namespace AIUB_Forum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Answer answer = db.Answers.Find(id);
-            db.Answers.Remove(answer);
-            db.SaveChanges();
+            var answer = _db.Answers.Find(id);
+            _db.Answers.Remove(answer);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -128,7 +128,7 @@ namespace AIUB_Forum.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

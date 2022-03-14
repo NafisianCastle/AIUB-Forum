@@ -7,9 +7,9 @@ namespace AIUB_Forum.Models.Entities
 {
     public class JobPostModel
     {
-        public int JPId { get; set; }
-        public System.DateTime JPCreationDate { get; set; }
-        public Nullable<System.DateTime> JPDeleteDate { get; set; }
+        public int JpId { get; set; }
+        public System.DateTime JpCreationDate { get; set; }
+        public Nullable<System.DateTime> JpDeleteDate { get; set; }
         public int Views { get; set; }
         public string Body { get; set; }
         public int JobId { get; set; }

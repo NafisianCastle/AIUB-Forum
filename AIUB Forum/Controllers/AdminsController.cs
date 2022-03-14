@@ -12,12 +12,12 @@ namespace AIUB_Forum.Controllers
 {
     public class AdminsController : Controller
     {
-        private AIUB_ForumEntities2 db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
 
         // GET: Admins
         public ActionResult Index()
         {
-            var admins = db.Admins.Include(a => a.User);
+            var admins = _db.Admins.Include(a => a.User);
             return View(admins.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            var admin = _db.Admins.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace AIUB_Forum.Controllers
         // GET: Admins/Create
         public ActionResult Create()
         {
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location");
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Admins.Add(admin);
-                db.SaveChanges();
+                _db.Admins.Add(admin);
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", admin.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", admin.UserId);
             return View(admin);
         }
 
@@ -68,12 +68,12 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            var admin = _db.Admins.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", admin.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", admin.UserId);
             return View(admin);
         }
 
@@ -86,11 +86,11 @@ namespace AIUB_Forum.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(admin).State = EntityState.Modified;
-                db.SaveChanges();
+                _db.Entry(admin).State = EntityState.Modified;
+                _db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.UserId = new SelectList(db.Users, "UserId", "Location", admin.UserId);
+            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", admin.UserId);
             return View(admin);
         }
 
@@ -101,7 +101,7 @@ namespace AIUB_Forum.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Admin admin = db.Admins.Find(id);
+            var admin = _db.Admins.Find(id);
             if (admin == null)
             {
                 return HttpNotFound();
@@ -114,9 +114,9 @@ namespace AIUB_Forum.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Admin admin = db.Admins.Find(id);
-            db.Admins.Remove(admin);
-            db.SaveChanges();
+            var admin = _db.Admins.Find(id);
+            _db.Admins.Remove(admin);
+            _db.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -124,7 +124,7 @@ namespace AIUB_Forum.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                _db.Dispose();
             }
             base.Dispose(disposing);
         }

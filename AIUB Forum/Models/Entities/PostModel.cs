@@ -11,7 +11,7 @@ namespace AIUB_Forum.Models.Entities
         public System.DateTime CreateDate { get; set; }
         public Nullable<System.DateTime> DeleteDate { get; set; }
         public int Score { get; set; }
-        public int views { get; set; }
+        public int Views { get; set; }
         public string Body { get; set; }
         public int UserId { get; set; }
         public string Title { get; set; }
