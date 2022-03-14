@@ -26,6 +26,10 @@ namespace AIUB_Forum.Models.Database
             this.Posts = new HashSet<Post>();
             this.Admins = new HashSet<Admin>();
             this.Moderators = new HashSet<Moderator>();
+            this.AnswerComments = new HashSet<AnswerComment>();
+            this.Answers = new HashSet<Answer>();
+            this.AnswerVotes = new HashSet<AnswerVote>();
+            this.Votes = new HashSet<Vote>();
         }
     
         public int UserId { get; set; }
@@ -52,5 +56,13 @@ namespace AIUB_Forum.Models.Database
         public virtual ICollection<Admin> Admins { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Moderator> Moderators { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnswerComment> AnswerComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnswerVote> AnswerVotes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

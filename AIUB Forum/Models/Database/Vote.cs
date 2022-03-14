@@ -20,5 +20,6 @@ namespace AIUB_Forum.Models.Database
         public System.DateTime Date { get; set; }
     
         public virtual Post Post { get; set; }
+        public virtual User User { get; set; }
     }
 }

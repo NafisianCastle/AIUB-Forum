@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bdc4d3f133d54292879f63fc7978b150" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="bdc4d3f133d54292879f63fc7978b150" Name="Diagram1" ZoomLevel="55">
         <EntityTypeShape EntityType="AIUB_ForumModel.Badge" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="AIUB_ForumModel.Comment" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
         <EntityTypeShape EntityType="AIUB_ForumModel.Company" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
@@ -31,6 +31,10 @@
         <EntityTypeShape EntityType="AIUB_ForumModel.Moderator" Width="1.5" PointX="2.75" PointY="6.125" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Admin_User" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Moderator_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerComments_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Answers_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Votes_User" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

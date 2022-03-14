@@ -315,6 +315,7 @@
     <Content Include="Views\Moderators\Details.cshtml" />
     <Content Include="Views\Moderators\Edit.cshtml" />
     <Content Include="Views\Moderators\Index.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

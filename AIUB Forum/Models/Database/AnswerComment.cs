@@ -28,5 +28,6 @@ namespace AIUB_Forum.Models.Database
         public int UserId { get; set; }
     
         public virtual Answer Answer { get; set; }
+        public virtual User User { get; set; }
     }
 }

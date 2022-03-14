@@ -17,6 +17,16 @@ namespace AIUB_Forum.Controllers
             var posts = _db.Posts.Include(p => p.User);
             return View(posts.ToList());
         }
+        [Authorize]
+        public ActionResult Profile(int? id)
+        {
+            var user = _db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
         [HttpGet]
         public ActionResult Login()
         {

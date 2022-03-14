@@ -174,6 +174,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_AnswerComments_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AnswerComments" Type="Self.AnswerComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AnswerComments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Answers_Posts">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
           <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
@@ -186,6 +198,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Answers_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Answers">
+              <PropertyRef Name="AnsUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_AnswerVotes_Answers">
           <End Role="Answers" Type="Self.Answers" Multiplicity="1" />
           <End Role="AnswerVotes" Type="Self.AnswerVotes" Multiplicity="*" />
@@ -195,6 +219,18 @@
             </Principal>
             <Dependent Role="AnswerVotes">
               <PropertyRef Name="AnsId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerVotes_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="AnswerVotes" Type="Self.AnswerVotes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AnswerVotes">
+              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -306,6 +342,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Votes_User">
+          <End Role="User" Type="Self.User" Multiplicity="1" />
+          <End Role="Votes" Type="Self.Votes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Votes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AIUB_ForumModelStoreContainer">
           <EntitySet Name="Admins" EntityType="Self.Admins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AnswerComments" EntityType="Self.AnswerComments" Schema="dbo" store:Type="Tables" />
@@ -328,12 +376,24 @@
             <End Role="Answers" EntitySet="Answers" />
             <End Role="AnswerComments" EntitySet="AnswerComments" />
           </AssociationSet>
+          <AssociationSet Name="FK_AnswerComments_User" Association="Self.FK_AnswerComments_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="AnswerComments" EntitySet="AnswerComments" />
+          </AssociationSet>
           <AssociationSet Name="FK_Answers_Posts" Association="Self.FK_Answers_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="Answers" EntitySet="Answers" />
           </AssociationSet>
+          <AssociationSet Name="FK_Answers_User" Association="Self.FK_Answers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Answers" EntitySet="Answers" />
+          </AssociationSet>
           <AssociationSet Name="FK_AnswerVotes_Answers" Association="Self.FK_AnswerVotes_Answers">
             <End Role="Answers" EntitySet="Answers" />
+            <End Role="AnswerVotes" EntitySet="AnswerVotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerVotes_User" Association="Self.FK_AnswerVotes_User">
+            <End Role="User" EntitySet="User" />
             <End Role="AnswerVotes" EntitySet="AnswerVotes" />
           </AssociationSet>
           <AssociationSet Name="FK_Badges_User" Association="Self.FK_Badges_User">
@@ -370,6 +430,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_Votes_Posts" Association="Self.FK_Votes_Posts">
             <End Role="Posts" EntitySet="Posts" />
+            <End Role="Votes" EntitySet="Votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_User" Association="Self.FK_Votes_User">
+            <End Role="User" EntitySet="User" />
             <End Role="Votes" EntitySet="Votes" />
           </AssociationSet>
         </EntityContainer>
@@ -483,6 +547,10 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Admins" Relationship="AIUB_ForumModel.FK_Admin_User" FromRole="User" ToRole="Admin" />
           <NavigationProperty Name="Moderators" Relationship="AIUB_ForumModel.FK_Moderator_User" FromRole="User" ToRole="Moderator" />
+          <NavigationProperty Name="AnswerComments" Relationship="AIUB_ForumModel.FK_AnswerComments_User" FromRole="User" ToRole="AnswerComment" />
+          <NavigationProperty Name="Answers" Relationship="AIUB_ForumModel.FK_Answers_User" FromRole="User" ToRole="Answer" />
+          <NavigationProperty Name="AnswerVotes" Relationship="AIUB_ForumModel.FK_AnswerVotes_User" FromRole="User" ToRole="AnswerVote" />
+          <NavigationProperty Name="Votes" Relationship="AIUB_ForumModel.FK_Votes_User" FromRole="User" ToRole="Vote" />
         </EntityType>
         <EntityType Name="Vote">
           <Key>
@@ -493,6 +561,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Post" Relationship="Self.FK_Votes_Posts" FromRole="Votes" ToRole="Posts" />
+          <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_Votes_User" FromRole="Vote" ToRole="User" />
         </EntityType>
         <Association Name="FK_Badges_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
@@ -656,6 +725,22 @@
             <End Role="User" EntitySet="Users" />
             <End Role="Moderator" EntitySet="Moderators" />
           </AssociationSet>
+          <AssociationSet Name="FK_AnswerComments_User" Association="AIUB_ForumModel.FK_AnswerComments_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AnswerComment" EntitySet="AnswerComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Answers_User" Association="AIUB_ForumModel.FK_Answers_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Answer" EntitySet="Answers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AnswerVotes_User" Association="AIUB_ForumModel.FK_AnswerVotes_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="AnswerVote" EntitySet="AnswerVotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_User" Association="AIUB_ForumModel.FK_Votes_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Vote" EntitySet="Votes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AnswerComment">
           <Key>
@@ -668,6 +753,7 @@
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Answer" Relationship="AIUB_ForumModel.FK_AnswerComments_Answers" FromRole="AnswerComment" ToRole="Answer" />
+          <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_AnswerComments_User" FromRole="AnswerComment" ToRole="User" />
         </EntityType>
         <EntityType Name="Answer">
           <Key>
@@ -684,6 +770,7 @@
           <NavigationProperty Name="AnswerComments" Relationship="AIUB_ForumModel.FK_AnswerComments_Answers" FromRole="Answer" ToRole="AnswerComment" />
           <NavigationProperty Name="Post" Relationship="AIUB_ForumModel.FK_Answers_Posts" FromRole="Answer" ToRole="Post" />
           <NavigationProperty Name="AnswerVotes" Relationship="AIUB_ForumModel.FK_AnswerVotes_Answers" FromRole="Answer" ToRole="AnswerVote" />
+          <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_Answers_User" FromRole="Answer" ToRole="User" />
         </EntityType>
         <Association Name="FK_AnswerComments_Answers">
           <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="1" />
@@ -718,6 +805,7 @@
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="Answer" Relationship="AIUB_ForumModel.FK_AnswerVotes_Answers" FromRole="AnswerVote" ToRole="Answer" />
+          <NavigationProperty Name="User" Relationship="AIUB_ForumModel.FK_AnswerVotes_User" FromRole="AnswerVote" ToRole="User" />
         </EntityType>
         <Association Name="FK_AnswerVotes_Answers">
           <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="1" />
@@ -767,6 +855,54 @@
               <PropertyRef Name="UserId" />
             </Principal>
             <Dependent Role="Moderator">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerComments_User">
+          <End Type="AIUB_ForumModel.User" Role="User" Multiplicity="1" />
+          <End Type="AIUB_ForumModel.AnswerComment" Role="AnswerComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AnswerComment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Answers_User">
+          <End Type="AIUB_ForumModel.User" Role="User" Multiplicity="1" />
+          <End Type="AIUB_ForumModel.Answer" Role="Answer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Answer">
+              <PropertyRef Name="AnsUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AnswerVotes_User">
+          <End Type="AIUB_ForumModel.User" Role="User" Multiplicity="1" />
+          <End Type="AIUB_ForumModel.AnswerVote" Role="AnswerVote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="AnswerVote">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Votes_User">
+          <End Type="AIUB_ForumModel.User" Role="User" Multiplicity="1" />
+          <End Type="AIUB_ForumModel.Vote" Role="Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Vote">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>

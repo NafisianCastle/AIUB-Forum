@@ -23,6 +23,7 @@
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (User.Identity.IsAuthenticated)
                     {
+                        <li><a href="/home/profile/@Session["userid"]">Profile</a></li>
                         <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
                     }
                 </ul>

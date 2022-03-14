@@ -36,5 +36,6 @@ namespace AIUB_Forum.Models.Database
         public virtual Post Post { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AnswerVote> AnswerVotes { get; set; }
+        public virtual User User { get; set; }
     }
 }
