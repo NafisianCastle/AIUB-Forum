@@ -144,6 +144,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\Admin.cs">
+      <DependentUpon>AIUBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\AIUBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -183,6 +186,9 @@
     <Compile Include="Models\Database\JobPost.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Database\Moderator.cs">
+      <DependentUpon>AIUBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Database\Post.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
@@ -192,6 +198,7 @@
     <Compile Include="Models\Database\Vote.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\AdminModel.cs" />
     <Compile Include="Models\Entities\AnswerCommentModel.cs" />
     <Compile Include="Models\Entities\AnswerModel.cs" />
     <Compile Include="Models\Entities\AnswerVoteModel.cs" />
@@ -200,6 +207,7 @@
     <Compile Include="Models\Entities\CompanyModel.cs" />
     <Compile Include="Models\Entities\JobModel.cs" />
     <Compile Include="Models\Entities\JobPostModel.cs" />
+    <Compile Include="Models\Entities\ModeratorModel.cs" />
     <Compile Include="Models\Entities\PostModel.cs" />
     <Compile Include="Models\Entities\UserModel.cs" />
     <Compile Include="Models\Entities\VoteModel.cs" />
