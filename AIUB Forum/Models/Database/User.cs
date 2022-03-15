@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+
 namespace AIUB_Forum.Models.Database
 {
     using System;
@@ -34,6 +36,7 @@ namespace AIUB_Forum.Models.Database
     
         public int UserId { get; set; }
         public string Location { get; set; }
+        [Required]
         public string Email { get; set; }
         public string AboutMe { get; set; }
         public string Views { get; set; }
@@ -41,7 +44,10 @@ namespace AIUB_Forum.Models.Database
         public int Reputation { get; set; }
         public byte[] ProfilePic { get; set; }
         public string UserType { get; set; }
+        [Required]
         public string Password { get; set; }
+        [Required(ErrorMessage="Please enter username"),MaxLength(50)]
+        [StringLength(50,ErrorMessage="Do not enter more than 50 characters")]
         public string Username { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
