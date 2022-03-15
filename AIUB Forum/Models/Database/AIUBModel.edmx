@@ -449,7 +449,7 @@
           </Key>
           <Property Name="BadgeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" DefaultValue="Beginner" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Class" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="User" Relationship="Self.FK_Badges_User" FromRole="Badges" ToRole="User" />

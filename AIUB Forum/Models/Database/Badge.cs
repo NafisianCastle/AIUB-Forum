@@ -14,6 +14,12 @@ namespace AIUB_Forum.Models.Database
     
     public partial class Badge
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Badge()
+        {
+            this.Name = "Beginner";
+        }
+    
         public int BadgeId { get; set; }
         public int UserId { get; set; }
         public string Name { get; set; }
