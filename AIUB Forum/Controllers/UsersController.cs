@@ -44,12 +44,9 @@ namespace AIUB_Forum.Controllers
             return View();
         }
 
-        // POST: Users/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "UserId,Location,Email,AboutMe,Views,CreationDate,Reputation,ProfilePic,UserType,Password,Username")] User user)
+        public ActionResult Create( User user)
         {
             if (!ModelState.IsValid) return View(user);
             _db.Users.Add(user);
@@ -73,15 +70,15 @@ namespace AIUB_Forum.Controllers
             return View(user);
         }
 
-        // POST: Users/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "UserId,Location,Email,AboutMe,Views,CreationDate,Reputation,ProfilePic,UserType,Password,Username")] User user)
+        public ActionResult Edit(User user)
         {
             if (!ModelState.IsValid) return View(user);
-            _db.Entry(user).State = EntityState.Modified;
+            var oldData = (from u in _db.Users
+                where u.UserId == user.UserId
+                select u).FirstOrDefault();
+            _db.Entry(oldData).CurrentValues.SetValues(user);
             _db.SaveChanges();
             return RedirectToAction("Index");
         }

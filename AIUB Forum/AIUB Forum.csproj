@@ -199,9 +199,6 @@
     <Compile Include="Models\Database\Post.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Database\User.cs">
-      <DependentUpon>AIUBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Database\Vote.cs">
       <DependentUpon>AIUBModel.tt</DependentUpon>
     </Compile>
@@ -299,11 +296,6 @@
     <Content Include="Views\Jobs\Details.cshtml" />
     <Content Include="Views\Jobs\Edit.cshtml" />
     <Content Include="Views\Jobs\Index.cshtml" />
-    <Content Include="Views\Badges\Create.cshtml" />
-    <Content Include="Views\Badges\Delete.cshtml" />
-    <Content Include="Views\Badges\Details.cshtml" />
-    <Content Include="Views\Badges\Edit.cshtml" />
-    <Content Include="Views\Badges\Index.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Users\AdminDashboard.cshtml" />
     <Content Include="Views\Users\AddAdmin.cshtml" />
@@ -321,10 +313,6 @@
     <Content Include="Views\Moderators\Edit.cshtml" />
     <Content Include="Views\Moderators\Index.cshtml" />
     <Content Include="Views\Home\Profile.cshtml" />
-    <Content Include="Views\Votes\Create.cshtml" />
-    <Content Include="Views\Votes\Delete.cshtml" />
-    <Content Include="Views\Votes\Details.cshtml" />
-    <Content Include="Views\Votes\Edit.cshtml" />
     <Content Include="Views\Votes\Index.cshtml" />
     <Content Include="Views\Answers\Create.cshtml" />
     <Content Include="Views\Answers\Delete.cshtml" />
@@ -349,6 +337,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Badges\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
