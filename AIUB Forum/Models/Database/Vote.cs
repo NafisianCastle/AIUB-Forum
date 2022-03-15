@@ -14,6 +14,12 @@ namespace AIUB_Forum.Models.Database
     
     public partial class Vote
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Vote()
+        {
+            this.Value = 1;
+        }
+    
         public int VoteId { get; set; }
         public int PostId { get; set; }
         public int UserId { get; set; }
