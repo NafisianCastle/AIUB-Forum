@@ -14,12 +14,6 @@ namespace AIUB_Forum.Models.Database
     
     public partial class Comment
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Comment()
-        {
-            this.Score = "0";
-        }
-    
         public int CommentId { get; set; }
         public int PostId { get; set; }
         public string Score { get; set; }

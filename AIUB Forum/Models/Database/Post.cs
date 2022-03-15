@@ -17,17 +17,14 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Post()
         {
-            this.Score = 0;
-            this.views = 0;
-            this.AnswerCount = 0;
-            this.ComentsCount = 0;
+            this.Answers = new HashSet<Answer>();
             this.Comments = new HashSet<Comment>();
             this.Votes = new HashSet<Vote>();
-            this.Answers = new HashSet<Answer>();
         }
     
         public int PostId { get; set; }
         public System.DateTime CreateDate { get; set; }
+        public Nullable<System.DateTime> ModifyDate { get; set; }
         public Nullable<System.DateTime> DeleteDate { get; set; }
         public int Score { get; set; }
         public int views { get; set; }
@@ -37,14 +34,13 @@ namespace AIUB_Forum.Models.Database
         public int AnswerCount { get; set; }
         public int ComentsCount { get; set; }
         public Nullable<System.DateTime> CloseDate { get; set; }
-        public Nullable<System.DateTime> ModifyDate { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comments { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vote> Votes { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answers { get; set; }
     }
 }

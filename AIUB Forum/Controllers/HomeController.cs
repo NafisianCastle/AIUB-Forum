@@ -10,8 +10,7 @@ namespace AIUB_Forum.Controllers
     // [Authorize]
     public class HomeController : Controller
     {
-        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
-        [Authorize]
+        private readonly AIUB_ForumEntities _db = new AIUB_ForumEntities();
         public ActionResult Index()
         {
             var posts = _db.Posts.Include(p => p.User);
@@ -34,11 +33,10 @@ namespace AIUB_Forum.Controllers
             if (User.Identity.IsAuthenticated) return RedirectToAction("Index");
             return View();
         }
-        [AllowAnonymous]
         [HttpPost]
         public ActionResult Login(User user)
         {
-            var entities = new AIUB_ForumEntities2();
+            var entities = new AIUB_ForumEntities();
             var data = (from e in entities.Users
                         where e.Password.Equals(user.Password) &&
                               e.Email.Equals(user.Email)
@@ -62,6 +60,18 @@ namespace AIUB_Forum.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
+            var isEmailAlreadyExists = _db.Users.Any(x => x.Email == user.Email);
+            if(isEmailAlreadyExists)
+            {
+                ModelState.AddModelError("Email", "User with this email already exists");
+                return View(user);
+            }
+            var isUsernameAlreadyExists = _db.Users.Any(x => x.Username == user.Username);
+            if(isUsernameAlreadyExists)
+            {
+                ModelState.AddModelError("Username", "User with this username already exists");
+                return View(user);
+            }
             user.UserType = "User";
             user.CreationDate = DateTime.Today;
             if (!ModelState.IsValid) return View(user);

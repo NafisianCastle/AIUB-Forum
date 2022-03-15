@@ -8,7 +8,7 @@ namespace AIUB_Forum.Controllers
 {
     public class JobPostsController : Controller
     {
-        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities _db = new AIUB_ForumEntities();
 
         // GET: JobPosts
         public ActionResult Index()

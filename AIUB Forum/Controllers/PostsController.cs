@@ -8,7 +8,7 @@ namespace AIUB_Forum.Controllers
 {
     public class PostsController : Controller
     {
-        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities _db = new AIUB_ForumEntities();
 
         // GET: Posts
         public ActionResult Index()

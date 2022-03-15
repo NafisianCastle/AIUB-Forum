@@ -12,7 +12,7 @@ namespace AIUB_Forum.Controllers
 {
     public class CommentsController : Controller
     {
-        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities _db = new AIUB_ForumEntities();
 
         // GET: Comments
         public ActionResult Index()

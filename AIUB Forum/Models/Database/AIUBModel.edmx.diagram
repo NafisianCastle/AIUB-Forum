@@ -4,37 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bdc4d3f133d54292879f63fc7978b150" Name="Diagram1" ZoomLevel="69">
-        <EntityTypeShape EntityType="AIUB_ForumModel.Badge" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Comment" Width="1.5" PointX="8.25" PointY="13.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Company" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.JobPost" Width="1.5" PointX="7.5" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Job" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Post" Width="1.5" PointX="3" PointY="13.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.User" Width="1.5" PointX="0.5" PointY="12" IsExpanded="true" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Vote" Width="1.5" PointX="5.25" PointY="14.125" IsExpanded="true" />
+      <Diagram DiagramId="4df181d3a679452c9864b608c7794370" Name="Diagram1" ZoomLevel="48">
+        <EntityTypeShape EntityType="AIUB_ForumModel.Admin" Width="1.5" PointX="3.625" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.AnswerComment" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Answer" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.AnswerVote" Width="1.5" PointX="7.5" PointY="16.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Badge" Width="1.5" PointX="3" PointY="17.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Comment" Width="1.5" PointX="8.25" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Company" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.JobPost" Width="1.5" PointX="7.5" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Job" Width="1.5" PointX="5.25" PointY="23.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Moderator" Width="1.5" PointX="3" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Post" Width="1.5" PointX="6.125" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.User" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AIUB_ForumModel.Vote" Width="1.5" PointX="10.25" PointY="23.75" IsExpanded="true" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Admin_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerComments_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerComments_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Answers_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Answers_User" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_Answers" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Badges_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Comments_Posts" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Comments_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Companies_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Jobs_Companies" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_JobPosts_Jobs" ManuallyRouted="false" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Moderator_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Posts_User" ManuallyRouted="false" />
         <AssociationConnector Association="AIUB_ForumModel.FK_Votes_Posts" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.AnswerComment" Width="1.5" PointX="7.625" PointY="16.75" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Answer" Width="1.5" PointX="5.5" PointY="17" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerComments_Answers" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_Answers_Posts" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.AnswerVote" Width="1.5" PointX="3" PointY="17.75" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_Answers" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Admin" Width="1.5" PointX="1" PointY="19.125" />
-        <EntityTypeShape EntityType="AIUB_ForumModel.Moderator" Width="1.5" PointX="3" PointY="7.625" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_Admin_User" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_Moderator_User" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerComments_User" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_Answers_User" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_AnswerVotes_User" />
-        <AssociationConnector Association="AIUB_ForumModel.FK_Votes_User" />
+        <AssociationConnector Association="AIUB_ForumModel.FK_Votes_User" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

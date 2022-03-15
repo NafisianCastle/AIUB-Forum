@@ -1,17 +1,53 @@
-﻿
+﻿@model AIUB_Forum.Models.Database.User
+
 @{
     ViewBag.Title = "Register";
 }
 
-<h2>Register</h2>
-<form name="reg" action="/home/register" method="post" class="form-horizontal" >
-    <label for="Username">Username</label>
-    <input type="text" name="Username" id="Username" placeholder="Enter Username" class="form-control" /> <br />
-    <label for="Email">Email</label>
-    <input type="email" name="Email" id="Email" placeholder="Enter Email" class="form-control"  /> <br />
-    <label for="Password">Password</label>
-    <input type="password" name="Password" id="Password" placeholder="Enter Password" class="form-control"  /> <br />
-    <label for="Location">Location</label>
-    <input type="text" name="Location" id="Location" placeholder="Enter your location" class="form-control" required/> <br/>
-    <input type="submit" value="Register!"/>
-</form>
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <h4>Register</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Register" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}

@@ -17,7 +17,6 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
-            this.JobPostCount = 0;
             this.Jobs = new HashSet<Job>();
         }
     

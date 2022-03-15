@@ -10,16 +10,14 @@ namespace AIUB_Forum.Controllers
     [AdminAccess]
     public class BadgesController : Controller
     {
-        private readonly AIUB_ForumEntities2 _db = new AIUB_ForumEntities2();
+        private readonly AIUB_ForumEntities _db = new AIUB_ForumEntities();
 
-        // GET: Badges
         public ActionResult Index()
         {
             var badges = _db.Badges.Include(b => b.User);
             return View(badges.ToList());
         }
 
-        // GET: Badges/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -34,19 +32,9 @@ namespace AIUB_Forum.Controllers
             return View(badge);
         }
 
-        // GET: Badges/Create
-        public ActionResult Create()
-        {
-            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location");
-            return View();
-        }
-
-        // POST: Badges/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "BadgeId,UserId,Name,Date,Class")] Badge badge)
+        public ActionResult Create(Badge badge)
         {
             if (ModelState.IsValid)
             {
@@ -56,41 +44,15 @@ namespace AIUB_Forum.Controllers
             }
 
             ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", badge.UserId);
-            return View(badge);
+            return new EmptyResult();
         }
-
-        // GET: Badges/Edit/5
+        
+       
         public ActionResult Edit(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var badge = _db.Badges.Find(id);
-            if (badge == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", badge.UserId);
-            return View(badge);
+            return new EmptyResult();
         }
 
-        // POST: Badges/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "BadgeId,UserId,Name,Date,Class")] Badge badge)
-        {
-            if (ModelState.IsValid)
-            {
-                _db.Entry(badge).State = EntityState.Modified;
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.UserId = new SelectList(_db.Users, "UserId", "Location", badge.UserId);
-            return View(badge);
-        }
 
         // GET: Badges/Delete/5
         public ActionResult Delete(int? id)

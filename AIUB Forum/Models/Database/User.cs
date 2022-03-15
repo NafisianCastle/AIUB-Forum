@@ -7,36 +7,45 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace AIUB_Forum.Models.Database
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class User
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Views = "0";
-            this.Reputation = 0;
-            this.UserType = "User";
-            this.Badges = new HashSet<Badge>();
-            this.Comments = new HashSet<Comment>();
-            this.Companies = new HashSet<Company>();
-            this.Posts = new HashSet<Post>();
             this.Admins = new HashSet<Admin>();
-            this.Moderators = new HashSet<Moderator>();
             this.AnswerComments = new HashSet<AnswerComment>();
             this.Answers = new HashSet<Answer>();
             this.AnswerVotes = new HashSet<AnswerVote>();
+            this.Badges = new HashSet<Badge>();
+            this.Comments = new HashSet<Comment>();
+            this.Companies = new HashSet<Company>();
+            this.Moderators = new HashSet<Moderator>();
+            this.Posts = new HashSet<Post>();
             this.Votes = new HashSet<Vote>();
         }
-    
+
         public int UserId { get; set; }
+        [Required(ErrorMessage = "Please enter username"), MaxLength(50)]
+        [RegularExpression(@"^[a-zA-Z0-9]+$", ErrorMessage = "user name must be combination of letters and numbers only.")]
+        public string Username { get; set; }
+        [Required(ErrorMessage = "Password is required"), MaxLength(50)]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+        [Required(ErrorMessage = "Confirm Password is required")]
+        [DataType(DataType.Password)]
+        [Compare("Password")]
+        public string ConfirmPassword { get; set; }
         public string Location { get; set; }
-        [Required]
+        [Required(ErrorMessage = "email is required")]
+        [RegularExpression("^[a-z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9]+)*\\.([a-z]{2,4})$", ErrorMessage = "Invalid email format.")]
         public string Email { get; set; }
         public string AboutMe { get; set; }
         public string Views { get; set; }
@@ -44,12 +53,15 @@ namespace AIUB_Forum.Models.Database
         public int Reputation { get; set; }
         public byte[] ProfilePic { get; set; }
         public string UserType { get; set; }
-        [Required]
-        public string Password { get; set; }
-        [Required(ErrorMessage="Please enter username"),MaxLength(50)]
-        [StringLength(50,ErrorMessage="Do not enter more than 50 characters")]
-        public string Username { get; set; }
-    
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Admin> Admins { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnswerComment> AnswerComments { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Answer> Answers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AnswerVote> AnswerVotes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Badge> Badges { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -57,17 +69,9 @@ namespace AIUB_Forum.Models.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Company> Companies { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Admin> Admins { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Moderator> Moderators { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnswerComment> AnswerComments { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Answer> Answers { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AnswerVote> AnswerVotes { get; set; }
+        public virtual ICollection<Post> Posts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Vote> Votes { get; set; }
     }

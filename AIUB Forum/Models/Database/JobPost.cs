@@ -14,12 +14,6 @@ namespace AIUB_Forum.Models.Database
     
     public partial class JobPost
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public JobPost()
-        {
-            this.Views = 0;
-        }
-    
         public int JPId { get; set; }
         public System.DateTime JPCreationDate { get; set; }
         public Nullable<System.DateTime> JPDeleteDate { get; set; }
